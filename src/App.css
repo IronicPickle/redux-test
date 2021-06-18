@@ -1,0 +1,45 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form > * {
+  margin: 16px;
+}
+form > input {
+  width: 200px;
+  padding: 16px;
+  border: 2px darkgray solid;
+  border-radius: 12px;
+}
+input:hover {
+  border-color: black;
+}
+button {
+  width: 100px;
+  padding: 8px;
+  border: 2px darkgray solid;
+  border-radius: 12px;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: black;
+}
+button:active {
+  background-color: whitesmoke;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small {
+  margin: 0;
+  padding: 0;
+}
