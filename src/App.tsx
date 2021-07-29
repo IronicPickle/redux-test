@@ -2,12 +2,12 @@ import React, { FormEvent } from "react";
 import "./App.css";
 import { User } from "./interfaces.ts/data";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { usersSlice } from "./redux/slices";
+import { addUser } from "./redux/slices/users";
 import { parseAddUserForm } from "./utils/form";
 
 function App() {
   const dispatch = useAppDispatch();
-  const users = useAppSelector((state) => state.users);
+  const users = useAppSelector((state) => state.usersReducer.users);
 
   const formSubmit = (event: FormEvent) => {
     event.stopPropagation();
@@ -15,18 +15,18 @@ function App() {
     const formData = parseAddUserForm();
     if (formData == null) return;
     const { name, age } = formData;
-    addUser(name, parseInt(age));
+    add(name, parseInt(age));
   };
 
-  const addUser = (name: string, age: number) => {
+  const add = (name: string, age: number) => {
     if (name.length === 0 || isNaN(age)) return;
     const user: User = {
       id: Math.floor(Math.random() * 100),
       name,
       age,
     };
-    console.log(user);
-    dispatch(usersSlice.actions.addUser(user));
+
+    dispatch(addUser(user));
   };
 
   return (
